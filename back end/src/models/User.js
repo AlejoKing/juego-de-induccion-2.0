@@ -1,4 +1,7 @@
 import { Schema,model } from "mongoose";
+import { async } from "regenerator-runtime";
+import bcrypt from 'bcryptjs';
+
 
 const userSchema=new Schema({
     tName:String,
@@ -14,6 +17,15 @@ const userSchema=new Schema({
         ref:"Role",
         type: Schema.Types.ObjectId
     }]
-})
+});
+
+userSchema.static.encryptPassword = async (password)=>{
+    const salt = await bcrypt.genSalt(10)
+    return await bcrypt.hash(password, salt)
+}
+
+userSchema.static.comparePassword = async (password,receivedPassword)=>{
+    return await bcrypt.compare(password,receivedPassword)
+}
 
 export default userSchema;
