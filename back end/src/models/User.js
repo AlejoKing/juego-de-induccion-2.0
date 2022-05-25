@@ -2,9 +2,18 @@ import { Schema,model } from "mongoose";
 
 const userSchema=new Schema({
     tName:String,
-    nAge:Number,
-    tEmail: String,
-    tPassword: String
+    tEmail:{ 
+        type:String,
+        unique:true
+    },
+    tPassword:{ 
+        type:String,
+        required:true
+    },
+    oRole:[{
+        ref:"Role",
+        type: Schema.Types.ObjectId
+    }]
 })
 
-export default model('user', userSchema)
+export default userSchema;
