@@ -3,7 +3,7 @@ import { async } from "regenerator-runtime";
 import bcrypt from 'bcryptjs';
 
 
-const userSchema=new Schema({
+const userSchema =new Schema({
     tName:String,
     tEmail:{ 
         type:String,
@@ -19,13 +19,13 @@ const userSchema=new Schema({
     }]
 });
 
-userSchema.static.encryptPassword = async (password)=>{
+userSchema.static.encryptPassword = async (tPassword)=>{
     const salt = await bcrypt.genSalt(10)
-    return await bcrypt.hash(password, salt)
+    return await bcrypt.hash(tPassword, salt)
 }
 
-userSchema.static.comparePassword = async (password,receivedPassword)=>{
-    return await bcrypt.compare(password,receivedPassword)
+userSchema.static.comparePassword = async (tPassword,receivedPassword)=>{
+    return await bcrypt.compare(tPassword,receivedPassword)
 }
 
-export default userSchema;
+export default model('User', userSchema) ;
