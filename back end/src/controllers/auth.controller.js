@@ -8,7 +8,7 @@ export const singUp = async (req,res)=>{
      const newUser = new User({
         tName,
         tEmail,
-        tPassword
+        tPassword: User.encryptPassword(tPassword)
     })
 
     console.log(newUser)
