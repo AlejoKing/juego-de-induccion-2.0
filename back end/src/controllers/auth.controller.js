@@ -1,17 +1,21 @@
-import { async } from "regenerator-runtime";
 import User  from "../models/User";
 
 
 export const singUp = async (req,res)=>{
+
+
     const{tName, tEmail, tPassword, oRole} = req.body;
+
 
      const newUser = new User({
         tName,
         tEmail,
-        tPassword: User.encryptPassword(tPassword)
+        tPassword: await User.encryptPassword(tPassword)
     })
 
     console.log(newUser)
+
+    const saveUser = await newUser.save();
 
     res.json('singUp')
 
