@@ -20,7 +20,7 @@ export const singUp = async (req,res)=>{
 
     if (roles){
         const foundRoles=await Role.find({tName:{$in: roles}})
-        newUser.roles = foundRoles.map(role=>role._id)
+        newUser.roles = foundRoles.map((role)=>role._id)
     }else{
         const role = await Role.findOne({tName:"user"})
         newUser.roles = [role._id]
@@ -30,7 +30,7 @@ export const singUp = async (req,res)=>{
     const savedUser = await newUser.save();
     console.log(savedUser)
 
-    const token = jwt.sign({id:savedUser._id},config.SECRET,{
+    const token = jwt.sign({id:saveUser._id},config.SECRET,{
         expiresIn: 86400//24 horas
     })
 
