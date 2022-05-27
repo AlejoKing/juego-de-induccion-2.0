@@ -39,7 +39,7 @@ UserCtrl.editUser = async (req, res) => {
     res.json({status: '¡Usuario Actualizado!'})
 }
 
-// (Eliminar un usuario- example)
+// (Eliminar un usuario -- example)
 UserCtrl.deleteUser = async (req, res) => {
     await User.findByIdAndRemove(req.params.id)
     res.json({status: '¡Usuario eliminado!'})
