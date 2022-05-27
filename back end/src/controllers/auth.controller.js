@@ -1,4 +1,6 @@
 import User  from "../models/User";
+import jwt from 'jsonwebtoken';
+import config from '../config';
 
 
 export const singUp = async (req,res)=>{
@@ -17,7 +19,11 @@ export const singUp = async (req,res)=>{
 
     const saveUser = await newUser.save();
 
-    res.json('singUp')
+    const token = jwt.sign({id:saveUser._id},config.SECRET,{
+        expiresIn: 86400//24 horas
+    })
+
+    res.status(200).json({token})
 
 }
 
