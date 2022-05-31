@@ -1,4 +1,4 @@
 import * as authJwt  from "./authjwt";
-import * as verifySingup from './verifySingup';
+import * as verifySingup from "./verifySingup";
 
-export {authJwt, verifySingup};
+export {authJwt,verifySingup};

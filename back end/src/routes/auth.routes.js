@@ -6,7 +6,7 @@ import * as autCtrl from "../controllers/auth.controller";
 import { authJwt, verifySingup } from '../middlewares';
 
 router.post('/signUp',[authJwt.verifyToken, authJwt.isAdmin, verifySingup.checkDuplicateEmail ,
-verifySingup.checkRolesExisted  ],autCtrl.singUp)
+verifySingup.checkRolesExisted],autCtrl.singUp)
 router.post('/signIn', autCtrl.signIn )
 
 export default router;
