@@ -1,5 +1,6 @@
 import { async } from 'regenerator-runtime';
 import { Roles } from '../models/Role';
+import User from '../models/User';
 
 export const  checkDuplicateEmail = async(req,res,next) =>{
     const email = await User.findOne({tEmail:req.body.tEmail})
