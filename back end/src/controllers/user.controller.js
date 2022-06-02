@@ -5,16 +5,20 @@ export const createUser =(req,res) =>{
     res.json('creating user')
 }
 
+export const getUserById = async (req, res) => {
+  const UserId =await User.findById(req.params.userId);
+  res.status(200).json(UserId)
+};
+
+export const getUser = async (req, res) => {
+  const users = await User.find();
+  return res.json(users);
+};
+
 export const updateUser = async(req,res) =>{
-    const { id } = req.params;
-  const user = {
-    tName: req.body.tName,
-    nAge: req.body.nAge,
-    tEmail: req.body.tEmail,
-    tPassword: req.body.tPassword,
-  };
-  await User.findByIdAndUpdate(id, { $set: user }, { new: true });
-  res.status(204).json({ message: "update user" });
+    
+  const updateUser =await User.findByIdAndUpdate(req.params.id,  req.body , { new: true });
+  res.status(204).json({ updateUser });
 }
 
 export const deleteUser = async (req,res)=>{
