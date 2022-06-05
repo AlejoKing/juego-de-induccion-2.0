@@ -10,6 +10,7 @@ export const createUser =(req,res) =>{
 export const getUserById = async (req, res) => {
   const UserId =await User.findById(req.params.userId);
   res.status(200).json(UserId)
+  //console.log(req.params.userId)
 };
 
 export const getUser = async (req, res) => {
@@ -19,12 +20,13 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async(req,res) =>{
     
-  const updateUser =await User.findByIdAndUpdate(req.params.id,  req.body , { new: true });
+  const updateUser =await User.findByIdAndUpdate(req.params.userId,  req.body , { new: true });
   res.status(204).json({ updateUser });
 }
 
 export const deleteUser = async (req,res)=>{
-    await User.findByIdAndRemove(req.params.id);
+  console.log(req.params.userId)
+    await User.findByIdAndRemove(req.params.userId);
     res.status(204).json({ message: "user delited" });
 }
 
