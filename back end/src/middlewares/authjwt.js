@@ -11,7 +11,7 @@ export const verifyToken = async (req,res,next) =>{
     try {
         const token =req.headers["x-access-token"]
 
-        console.log(token)
+        //console.log(token)
 
         if(!token) return res.status(403),json({message: "no Token provided"})
 
@@ -31,11 +31,12 @@ export const verifyToken = async (req,res,next) =>{
     
 };
 export const isAdmin = async (req,res,next)=>{
-        const user = await user.findById(req.userId)
+        const user = await User.findById(req.userId)
         const roles = await Role.find({_id:{$in: user.roles}})
 
         for(let i =0; i<roles.length; i++ ){
-            if(roles[i].name ==="admin"){
+            if(roles[i].tName ==="admin"){
+                //console.log("2")
                 next()
                 return;
             }
