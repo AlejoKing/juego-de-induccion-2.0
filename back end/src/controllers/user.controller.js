@@ -19,6 +19,13 @@ export const getUser = async (req, res) => {
 };
 
 export const updateUser = async(req,res) =>{
+  const{tName, tEmail, tPassword, roles} = req.body;
+  
+  const upUser = new User({
+    tName,
+    tEmail,
+    tPassword: await User.encryptPassword(tPassword)
+    })
     
   const updateUser =await User.findByIdAndUpdate(req.params.userId,  req.body , { new: true });
   res.status(204).json({ updateUser });
