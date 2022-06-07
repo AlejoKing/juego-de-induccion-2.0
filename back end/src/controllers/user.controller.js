@@ -28,6 +28,7 @@ export const updateUser = async(req,res) =>{
     })
     
   const updateUser =await User.findByIdAndUpdate(req.params.userId,  req.body , { new: true });
+  
   res.status(204).json({ updateUser });
 }
 
