@@ -1,6 +1,8 @@
 import { Schema,model } from "mongoose";
 
 import bcrypt from 'bcryptjs';
+import { byte } from "webidl-conversions";
+import { slategray } from "color-name";
 
 
 const userSchema =new Schema(
@@ -35,5 +37,15 @@ userSchema.statics.encryptPassword= async(tPassword)=>{
 userSchema.statics.comparePassword = async(tPassword,recivedPassword)=>{
   return  await bcrypt.compare(tPassword, recivedPassword)
 }
+
+userSchema.pre('findByIdAndUpdate', function(next){
+    bcrypt.genSalt(10).then(salts=>{
+        bcrypt.hash(this.tPassword,salts).then(hash=>{
+            this.tPassword =hash
+            next();
+        }).catch(error=>next(error))
+    }).catch(error => next(error));
+   
+});
 
 export default model('User', userSchema) ;
