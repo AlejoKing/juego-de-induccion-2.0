@@ -38,7 +38,7 @@ userSchema.statics.comparePassword = async(tPassword,recivedPassword)=>{
   return  await bcrypt.compare(tPassword, recivedPassword)
 }
 
-userSchema.pre('findByIdAndUpdate', function(next){
+/*userSchema.pre('findByIdAndUpdate', function(next){
     bcrypt.genSalt(10).then(salts=>{
         bcrypt.hash(this.tPassword,salts).then(hash=>{
             this.tPassword =hash
@@ -46,6 +46,6 @@ userSchema.pre('findByIdAndUpdate', function(next){
         }).catch(error=>next(error))
     }).catch(error => next(error));
    
-});
+});*/
 
 export default model('User', userSchema) ;
