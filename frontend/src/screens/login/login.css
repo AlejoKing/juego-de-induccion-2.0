@@ -20,6 +20,8 @@
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+  border: #022338 3px solid;
+  border-radius: 15px;
 }
 
 img {
@@ -63,6 +65,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  border-radius: 10px;
 }
 
 .robot {
