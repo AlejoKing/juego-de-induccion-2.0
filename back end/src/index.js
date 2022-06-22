@@ -3,4 +3,4 @@ import './database'
 
 app.listen(4000);
 
-console.log('Server listen port', 3000)
+console.log('Server listen port', 4000)

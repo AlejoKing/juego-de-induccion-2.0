@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Sidebar.Index.css"; // css de sidebar
+import "./Sidebar.css"; // css de sidebar
 import { Link } from "react-router-dom";
 import Logo from "./its.png";
 

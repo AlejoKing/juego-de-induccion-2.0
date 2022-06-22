@@ -1,19 +1,10 @@
 import "./App.css";
-import Login from "./screens/login/login";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+//import Sidebar from "./components/Sidebar";
+import Adu from "./screens/aduser/adu";
 
 function App() {
-  /*return(
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Login/>}>
-
-      </Route>
-    </Routes>
-    </BrowserRouter>
-  );*/ return <Login></Login>;
-
+  return <Adu />;
 }
 
 export default App;
